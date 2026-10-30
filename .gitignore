@@ -15,6 +15,12 @@ cheat/
 # 自动生成的密钥文件（每次打包重新生成）
 CryptoKeys.g.cs
 
+# 一键打包工具链（不上传仓库，仅本地使用）
+set-dll.ps1
+set-dll.bat
+Loader.crproj
+tools/
+
 # 系统垃圾
 Thumbs.db
 .DS_Store

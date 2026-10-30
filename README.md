@@ -36,11 +36,8 @@
 ├── AboutWindow.xaml(.cs)  # 关于页
 ├── Injector.cs            # 注入器封装：解密负载、调用注入、用后删除
 ├── Crypto.cs              # AES-256 解密
-├── CryptoKeys.g.cs        # 【自动生成】每次打包由脚本重新生成，不入库
-├── set-dll.ps1 / .bat     # 一键打包脚本（选 DLL → 加密 → 混淆 → 打包）
-├── Loader.crproj          # ConfuserEx 混淆配置
-├── injtrol/               # C++ 注入器（源码 + 编译产物）
-└── tools/ConfuserEx/      # 混淆器（免安装）
+├── CryptoKeys.g.cs        # 【自动生成】密钥文件，不入库
+└── injtrol/               # C++ 注入器（源码 + 编译产物）
 ```
 
 ## 构建说明
@@ -51,20 +48,12 @@
 git clone https://github.com/yry4399/Neverlose-Injector.git
 cd Neverlose-Injector
 
-# 方式一：一键流程（推荐）——选择 DLL、加密、混淆、打包一次完成
-.\set-dll.bat
-
-# 方式二：命令行参数
-.\set-dll.ps1 -DllPath "C:\path\to\your.dll" -Build
-
-# 跳过混淆（调试用）
-.\set-dll.ps1 -DllPath "C:\path\to\your.dll" -Build -SkipObfuscate
+dotnet publish -c Release -r win-x64 --self-contained true `
+    -p:PublishSingleFile=true -p:EnableCompressionInSingleFile=true
 ```
 
-产物输出：`bin\Release\net8.0-windows\win-x64\publish\Loader.exe`
-
-> 注意：仓库不包含 `CryptoKeys.g.cs`（密钥文件）与 `cheat/`（加密负载），
-> 首次构建必须先运行一次 `set-dll.ps1` 生成密钥，否则无法编译。
+> 说明：仓库不包含密钥文件 `CryptoKeys.g.cs` 与负载目录 `cheat/`，
+> 完整的加密打包工具链未随源码公开。仓库代码用于界面与注入流程的学习研究。
 
 ## 使用说明
 
