@@ -1,0 +1,20 @@
+# 编译产物
+bin/
+obj/
+Confused/
+*.user
+
+# 发布产物
+*.exe
+!tools/ConfuserEx/*.exe
+!injtrol/build/*.exe
+
+# 加密负载（含私有 DLL，切勿上传）
+cheat/
+
+# 自动生成的密钥文件（每次打包重新生成）
+CryptoKeys.g.cs
+
+# 系统垃圾
+Thumbs.db
+.DS_Store

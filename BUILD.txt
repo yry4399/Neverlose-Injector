@@ -1,0 +1,22 @@
+═══════════════════════════════════════════
+  NL Loader — Инструкция по сборке .exe
+═══════════════════════════════════════════
+
+1. Установи .NET 8 SDK:
+   https://dotnet.microsoft.com/download/dotnet/8.0
+   (нужен именно SDK, не Runtime)
+
+2. Открой папку с проектом в терминале (cmd / PowerShell):
+   cd "путь\к\папке\Loaders for cheats"
+
+3. Положи свою аватарку в Assets\avatar.png
+   (если её нет — сборка выдаст ошибку)
+
+4. Собери один .exe файл:
+
+   dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true
+
+5. Готовый файл:
+   bin\Release\net8.0-windows\win-x64\publish\Loader.exe
+
+═══════════════════════════════════════════

@@ -1,0 +1,114 @@
+<Window x:Class="Loader.GameWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Counter-Strike" Width="360" Height="230"
+        Icon="pack://application:,,,/Assets/nl_logo.png"
+        WindowStyle="None" AllowsTransparency="True" Background="Transparent"
+        ResizeMode="NoResize" WindowStartupLocation="CenterOwner" ShowInTaskbar="False"
+        FontFamily="Segoe UI" UseLayoutRounding="True"
+        TextOptions.TextFormattingMode="Display"
+        Loaded="Window_Loaded">
+    <Border x:Name="Root" CornerRadius="8" Background="#0C1724" BorderBrush="#1B2D42" BorderThickness="1"
+            RenderTransformOrigin="0.5,0.5" Opacity="0">
+        <Border.RenderTransform>
+            <ScaleTransform x:Name="RootScale" ScaleX="0.92" ScaleY="0.92"/>
+        </Border.RenderTransform>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="36"/>
+                <RowDefinition Height="1"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="1"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Заголовок (окно нельзя двигать мышкой) -->
+            <Grid Grid.Row="0" Background="Transparent">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="12,0,0,0">
+                    <Border x:Name="HeaderIcon" Width="20" Height="20" CornerRadius="4" ClipToBounds="True"
+                            Background="#0A1622">
+                        <Image x:Name="HeaderIconImage" Source="pack://application:,,,/Assets/csgo.png"
+                               Stretch="UniformToFill" RenderOptions.BitmapScalingMode="HighQuality"/>
+                    </Border>
+                    <TextBlock x:Name="HeaderTitle" Text="Counter-Strike: Global Offensive" Foreground="White"
+                               FontSize="11.5" FontWeight="SemiBold" Margin="8,0,0,0" VerticalAlignment="Center"/>
+                </StackPanel>
+                <Button Content="✕" Style="{StaticResource TitleButton}" HorizontalAlignment="Right"
+                        VerticalAlignment="Center" Margin="0,0,10,0" Click="Close_Click"/>
+            </Grid>
+
+            <Rectangle Grid.Row="1" Fill="#1B2D42"/>
+
+            <!-- Информация -->
+            <Grid Grid.Row="2" Margin="12,8,12,4">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel>
+                    <TextBlock Style="{StaticResource GameInfo}"><Run Text="Build: " Foreground="#7C8C9E"/><Run Text="Release" Foreground="#2E9BE6"/></TextBlock>
+                    <TextBlock Style="{StaticResource GameInfo}"><Run Text="Updated: " Foreground="#7C8C9E"/><Run Text="29.10.2026" Foreground="#2E9BE6"/></TextBlock>
+                    <TextBlock Style="{StaticResource GameInfo}"><Run Text="Expires: " Foreground="#7C8C9E"/><Run Text="never" Foreground="#2E9BE6"/></TextBlock>
+                    <TextBlock Style="{StaticResource GameInfo}"><Run Text="Version: " Foreground="#7C8C9E"/><Run Text="1.0" Foreground="#2E9BE6"/></TextBlock>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Margin="6,0,0,0">
+                    <TextBlock x:Name="BuildTimeText" Text="29.10.2026 18:00" Foreground="White" FontSize="10" FontWeight="SemiBold"/>
+                    <Rectangle Height="1" Fill="#1B2D42" Margin="0,4,0,4"/>
+                    <TextBlock Style="{StaticResource GameLog}" Text="- CS2 + CS:GO support"/>
+                    <TextBlock Style="{StaticResource GameLog}" Text="- DLL loader added"/>
+                    <TextBlock Style="{StaticResource GameLog}" Text="- Compact game window"/>
+                </StackPanel>
+
+                <TextBlock Grid.Row="1" Grid.ColumnSpan="2"
+                           Text="闲鱼:我是学生你懂我意思吧"
+                           Foreground="#5E6E80" FontSize="9"
+                           HorizontalAlignment="Center" Margin="0,6,0,2"/>
+            </Grid>
+
+            <Rectangle Grid.Row="3" Fill="#1B2D42"/>
+
+            <!-- Низ: выбор пути к игре, кнопка launch -->
+            <Grid Grid.Row="4" Margin="12,8,12,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Margin="0,0,10,0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="36"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Game" Foreground="#7C8C9E" FontSize="10" VerticalAlignment="Center"/>
+                        <Button Grid.Column="1" Style="{StaticResource PickerButton}" Click="PickGame_Click"
+                                ToolTip="Select cs2.exe / csgo.exe">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="&#xE8B7;" FontFamily="Segoe MDL2 Assets" FontSize="9"
+                                           Foreground="#2E9BE6" VerticalAlignment="Center"/>
+                                <TextBlock x:Name="GamePathText" Grid.Column="1" Margin="4,0,0,0" FontSize="9.5"
+                                           TextTrimming="CharacterEllipsis" VerticalAlignment="Center"/>
+                            </Grid>
+                        </Button>
+                    </Grid>
+                </StackPanel>
+
+                <Button x:Name="StartButton" Grid.Column="1" Width="70" Height="25" VerticalAlignment="Bottom"
+                        Style="{StaticResource PlayButton}" IsEnabled="False"
+                        Click="Start_Click" ToolTip="Launch">
+                    <Path Data="M0,0 L8,5 L0,10 Z" Stroke="White" StrokeThickness="1.3" StrokeLineJoin="Round"/>
+                </Button>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

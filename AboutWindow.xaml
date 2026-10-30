@@ -1,0 +1,77 @@
+<Window x:Class="Loader.AboutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="About" Width="300" Height="366"
+        Icon="pack://application:,,,/Assets/nl_logo.png"
+        WindowStyle="None" AllowsTransparency="True" Background="Transparent"
+        ResizeMode="NoResize" WindowStartupLocation="CenterOwner" ShowInTaskbar="False"
+        FontFamily="Segoe UI" UseLayoutRounding="True"
+        TextOptions.TextFormattingMode="Display"
+        Loaded="Window_Loaded">
+    <Border x:Name="Root" CornerRadius="8" Background="#0B1626" BorderBrush="#1D3047" BorderThickness="1"
+            RenderTransformOrigin="0.5,0.5" Opacity="0">
+        <Border.RenderTransform>
+            <ScaleTransform x:Name="RootScale" ScaleX="0.9" ScaleY="0.9"/>
+        </Border.RenderTransform>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Заголовок -->
+            <Border Background="#0E1D31" CornerRadius="8,8,0,0" MouseLeftButtonDown="Header_MouseLeftButtonDown">
+                <Grid Margin="11,0,8,0">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <TextBlock Text="⚙" FontFamily="Segoe UI Symbol" Foreground="#3BA0FF" FontSize="11"
+                                   VerticalAlignment="Center"/>
+                        <TextBlock Text="About NL Loader" Foreground="White" FontSize="10.5" FontWeight="SemiBold"
+                                   Margin="6,0,0,0" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <Button Content="✕" Style="{StaticResource TitleButton}" HorizontalAlignment="Right"
+                            VerticalAlignment="Center" Click="Close_Click"/>
+                </Grid>
+            </Border>
+
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                <StackPanel Margin="16,12,16,12">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,2,0,8">
+                        <TextBlock Text="NL" HorizontalAlignment="Center" Foreground="White" FontSize="22"
+                                   FontWeight="Black">
+                            <TextBlock.Effect>
+                                <DropShadowEffect Color="#19C3FF" Direction="180" ShadowDepth="1.5" BlurRadius="0" Opacity="1"/>
+                            </TextBlock.Effect>
+                        </TextBlock>
+                        <TextBlock Text="LOADER" Foreground="#3BA0FF" FontSize="16" FontWeight="Black"
+                                   VerticalAlignment="Bottom" Margin="5,0,0,2"/>
+                    </StackPanel>
+
+                    <Rectangle Height="1" Fill="#1D3047" Margin="-16,0,-16,10"/>
+
+                    <TextBlock Style="{StaticResource InfoLine}"><Run Text="Version: "/><Run Text="1.0" Foreground="#3BA0FF"/></TextBlock>
+                    <TextBlock Style="{StaticResource InfoLine}"><Run Text="Build date: "/><Run Text="Oct 29 2026" Foreground="#3BA0FF"/></TextBlock>
+                    <TextBlock Style="{StaticResource InfoLine}"><Run Text="Build type: "/><Run Text="Release" Foreground="#3BA0FF"/></TextBlock>
+                    <TextBlock Style="{StaticResource InfoLine}"><Run Text="Registered to: "/><Run Text="LKY0112" Foreground="#3BA0FF"/></TextBlock>
+                    <TextBlock Style="{StaticResource InfoLine}"><Run Text="Subscription till: "/><Run Text="never" Foreground="#3BA0FF"/></TextBlock>
+
+                    <TextBlock Text="nl-loader © 2026" HorizontalAlignment="Center" Foreground="White" FontSize="9.5"
+                               FontWeight="SemiBold" Margin="0,4,0,10"/>
+
+                    <Rectangle Height="1" Fill="#1D3047" Margin="-16,0,-16,10"/>
+
+                    <!-- Как создавался лоадер -->
+                    <TextBlock Text="Development log" Foreground="White" FontSize="10.5" FontWeight="SemiBold" Margin="0,0,0,6"/>
+                    <TextBlock Style="{StaticResource LogLine}"><Run Text="• " Foreground="#3BA0FF"/><Run Text="Concept based on NL design"/></TextBlock>
+                    <TextBlock Style="{StaticResource LogLine}"><Run Text="• " Foreground="#3BA0FF"/><Run Text="Splash: 120×120 card, expands from center"/></TextBlock>
+                    <TextBlock Style="{StaticResource LogLine}"><Run Text="• " Foreground="#3BA0FF"/><Run Text="YouTube-style spinner (8 fading arcs)"/></TextBlock>
+                    <TextBlock Style="{StaticResource LogLine}"><Run Text="• " Foreground="#3BA0FF"/><Run Text="Main window expands to 477×336"/></TextBlock>
+                    <TextBlock Style="{StaticResource LogLine}"><Run Text="• " Foreground="#3BA0FF"/><Run Text="CS:GO + CS2 subscriptions, never expires"/></TextBlock>
+                    <TextBlock Style="{StaticResource LogLine}"><Run Text="• " Foreground="#3BA0FF"/><Run Text="Game window: exe + DLL picker, launch"/></TextBlock>
+                    <TextBlock Style="{StaticResource LogLine}"><Run Text="• " Foreground="#3BA0FF"/><Run Text="Loading overlay: blurred backdrop, staged progress"/></TextBlock>
+                    <TextBlock Style="{StaticResource LogLine}"><Run Text="• " Foreground="#3BA0FF"/><Run Text="Progress bar moves in jerky steps"/></TextBlock>
+                    <TextBlock Style="{StaticResource LogLine}"><Run Text="• " Foreground="#3BA0FF"/><Run Text="v1.0 Release — C# WPF / .NET 8, by LKY0112"/></TextBlock>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Border>
+</Window>

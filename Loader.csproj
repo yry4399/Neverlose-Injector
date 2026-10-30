@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <AssemblyName>Loader</AssemblyName>
+    <RootNamespace>Loader</RootNamespace>
+    <ApplicationIcon>Assets\app.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\*.png" />
+    <Resource Include="hippo photo\*.png" />
+    <Resource Include="backgroundphoto\*.jpg" />
+    <Resource Include="profile photo\*.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- 注入器与 DLL 由 set-dll.ps1 用 AES-256 加密成 .dat 后嵌入，运行时内存解密 -->
+    <EmbeddedResource Include="cheat\*.dat" />
+  </ItemGroup>
+
+</Project>
